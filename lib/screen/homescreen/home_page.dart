@@ -110,7 +110,7 @@ class HomePage extends StatelessWidget {
                                                 padding:
                                                     const EdgeInsets.all(10),
                                                 child: AutoSizeText(
-                                                  'HighCoder',
+                                                  'El prof ~',
                                                   style: GoogleFonts.exo(
                                                       fontSize: 35,
                                                       color: Colors.white,
@@ -141,7 +141,7 @@ class HomePage extends StatelessWidget {
                               alignment: Alignment.topCenter,
                               child: FrostedWidget(
                                 onPressed: () {
-                                  currentState.launchInBrowser(topMate);
+                                  currentState.launchInBrowser(whatsapp);
                                 },
                                 childW: Center(
                                   child: Container(
@@ -151,7 +151,7 @@ class HomePage extends StatelessWidget {
                                           MainAxisAlignment.center,
                                       children: [
                                         Image.asset(
-                                          "assets/icons/topMate.png",
+                                          "assets/icons/whatsapp.png",
                                           width: 50 *
                                               theme.widthRatio *
                                               theme.heightRatio,
@@ -280,8 +280,8 @@ class HomePage extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          AutoSizeText(
-                                            '"Don\'t run after success run after perfection success will follow."',
+                                          AutoSizeText("Computers were born to solve problems that didn't exist before." ,
+
                                             style: GoogleFonts.inter(
                                                 // fontSize: 30,
                                                 color: Colors.white,
@@ -293,7 +293,7 @@ class HomePage extends StatelessWidget {
                                           Align(
                                               alignment: Alignment.bottomRight,
                                               child: AutoSizeText(
-                                                '-Baba Ranchhoddas',
+                                                '- Bill Gates',
                                                 style: GoogleFonts.inter(
                                                     // fontSize: 12,
                                                     color: Colors.white

@@ -73,6 +73,9 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/rive/
+    - assets/profile.jpg
+    - assets/
+    - assets/icons/whatsapp.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
