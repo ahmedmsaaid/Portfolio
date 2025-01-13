@@ -5,6 +5,7 @@ class AppModel {
   String title;
   String? assetPath;
   IconData? icon;
+  void Function()? onTab;
 
   Color color;
   Widget? screen;
@@ -16,6 +17,7 @@ class AppModel {
     this.assetPath,
     this.icon,
     this.link,
+    this.onTab,
     this.screen,
   }) : assert(icon == null || assetPath == null);
 }
