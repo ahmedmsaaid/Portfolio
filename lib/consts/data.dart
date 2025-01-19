@@ -1,3 +1,5 @@
+import 'package:awesome_portfolio/apps/screeens/apps_screen.dart';
+import 'package:awesome_portfolio/consts/get_remote_assets.dart';
 import 'package:awesome_portfolio/models/app_model.dart';
 import 'package:awesome_portfolio/models/color_model.dart';
 import 'package:awesome_portfolio/models/device_model.dart';
@@ -36,7 +38,6 @@ List<ColorModel> colorPalette = [
     color: Colors.yellowAccent,
     gradient: const LinearGradient(
       begin: Alignment.bottomLeft,
-      // transform: Grad,
       end: Alignment.topRight,
       colors: [Colors.yellowAccent, Colors.deepOrange],
     ),
@@ -83,7 +84,7 @@ List<ColorModel> colorPalette = [
     gradient: const LinearGradient(
       begin: Alignment.bottomLeft,
       end: Alignment.topRight,
-      colors: [Colors.indigo, Colors.deepOrange], // Adjust colors as needed
+      colors: [Colors.indigo, Colors.deepOrange],
     ),
   ),
 ];
@@ -141,10 +142,12 @@ List<AppModel> apps = [
     link: github,
   ),
   AppModel(
+    screen: AppsScreen(
+      repoUrl: "https://api.github.com/repos/ahmedmsaaid/assets",
+    ),
     title: "Apps",
     assetPath: "assets/icons/apps.png",
     color: Colors.white,
-    // link: playApps,
   ),
 ];
 
