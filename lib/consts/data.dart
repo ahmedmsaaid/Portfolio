@@ -1,3 +1,5 @@
+import 'package:awesome_portfolio/apps/screeens/apps_screen.dart';
+import 'package:awesome_portfolio/consts/get_remote_assets.dart';
 import 'package:awesome_portfolio/models/app_model.dart';
 import 'package:awesome_portfolio/models/color_model.dart';
 import 'package:awesome_portfolio/models/device_model.dart';
@@ -36,7 +38,6 @@ List<ColorModel> colorPalette = [
     color: Colors.yellowAccent,
     gradient: const LinearGradient(
       begin: Alignment.bottomLeft,
-      // transform: Grad,
       end: Alignment.topRight,
       colors: [Colors.yellowAccent, Colors.deepOrange],
     ),
@@ -83,7 +84,7 @@ List<ColorModel> colorPalette = [
     gradient: const LinearGradient(
       begin: Alignment.bottomLeft,
       end: Alignment.topRight,
-      colors: [Colors.indigo, Colors.deepOrange], // Adjust colors as needed
+      colors: [Colors.indigo, Colors.deepOrange],
     ),
   ),
 ];
@@ -140,12 +141,14 @@ List<AppModel> apps = [
     color: Colors.white,
     link: github,
   ),
-  // AppModel(
-  //   title: "Play Store",
-  //   assetPath: "assets/icons/playstore.svg",
-  //   color: Colors.white,
-  //   link: playApps,
-  // ),
+  AppModel(
+    screen: AppsScreen(
+      repoUrl: "https://api.github.com/repos/ahmedmsaaid/assets",
+    ),
+    title: "Apps",
+    assetPath: "assets/icons/apps.png",
+    color: Colors.white,
+  ),
 ];
 
 final List<JobExperience> education = [
@@ -204,11 +207,10 @@ final List<JobExperience> jobExperiences = [
       "Log in using Google or email-password..",
       "Use simple animation..",
       "Some of the techniques used theming ,localization ,Bloc ,Responsive ,Firebase Storage ,FireBase Fire Store,Convert Audio To Mb3,LottieFiles ,SharedPreference ,Doi,pdf | Dart package ",
-     
     ],
   ),
   // Add more job experiences here...
-  
+
   // JobExperience(
   //   color: Colors.orangeAccent,
   //   location: "Remote",
@@ -249,13 +251,10 @@ final List<JobExperience> jobExperiences = [
   //     "Published the game on the Play Store, achieving over 5,000 downloads, showcasing the ability to deliver a popular and engaging mobile application.",
   //   ],
   // ),
+];
 
-
-
-]
-;
-
-const String facebook= "https://www.facebook.com/profile.php?id=100085093500634";
+const String facebook =
+    "https://www.facebook.com/profile.php?id=100085093500634";
 const String linkedIn = "https://www.linkedin.com/in/ahmed-saaid-1656021b0/";
 const String github = "https://github.com/ahmedmsaaid";
 const String twitter = "https://x.com/AhMed51692444";
@@ -263,7 +262,8 @@ const String whatsapp = "https://wa.link/2xivst";
 const String resumeLink =
     "https://drive.google.com/file/d/1LO3Km6fFkJVW92MNXRLSYl--E9YlTHJd/view";
 const String email = "ahmedsaaid908@gmail.com";
-String introduction ="“Welcome to my portfolio website, this website is highly inspired (almost copied) by Pawan Kumar.\n\nThat I'm a Flutter  developer with experience developing impressive, ready-to-use apps. I have completed two full-fledged applications, working to provide outstanding user experiences by designing easy-to-use interfaces and smooth performance. I always strive to learn and develop, looking for new opportunities to improve my skills and build applications that meet users' needs.";
+String introduction =
+    "“Welcome to my portfolio website, this website is highly inspired (almost copied) by Pawan Kumar.\n\nThat I'm a Flutter  developer with experience developing impressive, ready-to-use apps. I have completed two full-fledged applications, working to provide outstanding user experiences by designing easy-to-use interfaces and smooth performance. I always strive to learn and develop, looking for new opportunities to improve my skills and build applications that meet users' needs.";
 const String playApps =
     "https://play.google.com/store/apps/developer?id=AppyMonk";
 
@@ -285,19 +285,18 @@ List<SkillsModel> skills = [
     skillName: "Bloc",
     colorS: Colors.orange,
   ),
- 
-  
   SkillsModel(
     skillName: "Localization",
     colorS: Colors.orange,
-  ),  SkillsModel(
+  ),
+  SkillsModel(
     skillName: "OOp",
     colorS: Colors.orange,
-  ),  SkillsModel(
+  ),
+  SkillsModel(
     skillName: "Responcive",
     colorS: Colors.orange,
-  ), 
-
+  ),
   SkillsModel(
     skillName: "Dio",
     colorS: Colors.yellow,
