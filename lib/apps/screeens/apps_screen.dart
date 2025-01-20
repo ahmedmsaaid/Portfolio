@@ -12,7 +12,7 @@ class AppsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           gradient: LinearGradient(
         begin: Alignment.topLeft,
         // end: Alignment(0, -0.4),
@@ -25,54 +25,64 @@ class AppsScreen extends StatelessWidget {
           child: BlocBuilder<AppsCubit, AppsState>(
             builder: (context, state) {
               if (state is FileGridLoading) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (state is FileGridLoaded) {
                 final files = state.files;
-                return GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 5,
-                  ),
-                  itemCount: files.length,
-                  itemBuilder: (context, index) {
-                    final file = files[index];
+                return Center(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    decoration: BoxDecoration(
+                        color: Colors.teal,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                        crossAxisSpacing: 5,
+                        mainAxisSpacing: 5,
+                      ),
+                      itemCount: files.length,
+                      itemBuilder: (context, index) {
+                        final file = files[index];
 
-                    return GestureDetector(
-                      onTap: () {
-                        // عند الضغط على العنصر، ننتقل إلى صفحة التفاصيل
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => FileDetailPage(file: file),
+                        return GestureDetector(
+                          onTap: () {
+                            // عند الضغط على العنصر، ننتقل إلى صفحة التفاصيل
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    FileDetailPage(file: file),
+                              ),
+                            );
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              FutureBuilder<String>(
+                                future: checkImageUrl(file),
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return const Center(
+                                        child: CircularProgressIndicator());
+                                  } else if (snapshot.hasError) {
+                                    return Image.network(
+                                        "https://example.com/default_image.jpeg"); // صورة افتراضية
+                                  } else {
+                                    return AppWidget(
+                                      imageUrl: snapshot.data ?? '',
+                                      appName: file,
+                                    );
+                                  }
+                                },
+                              ),
+                            ],
                           ),
                         );
                       },
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          FutureBuilder<String>(
-                            future: checkImageUrl(file),
-                            builder: (context, snapshot) {
-                              if (snapshot.connectionState ==
-                                  ConnectionState.waiting) {
-                                return Center(
-                                    child: CircularProgressIndicator());
-                              } else if (snapshot.hasError) {
-                                return Image.network(
-                                    "https://example.com/default_image.jpeg"); // صورة افتراضية
-                              } else {
-                                return AppWidget(
-                                  imageUrl: snapshot.data ?? '',
-                                  appName: file,
-                                );
-                              }
-                            },
-                          ),
-                        ],
-                      ),
-                    );
-                  },
+                    ),
+                  ),
                 );
               } else if (state is FileGridError) {
                 return Center(child: Text('Error: ${state.message}'));
@@ -113,66 +123,41 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-            topRight: Radius.circular(8),
-            topLeft: Radius.circular(8),
-            bottomLeft: Radius.circular(5),
-            bottomRight: Radius.circular(5)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 10,
-            offset: Offset(0, 4),
-          ),
-        ],
-        color: Colors.black,
-      ),
-      margin: EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(width: 1, color: Colors.amber),
-              borderRadius: BorderRadius.circular(15),
-              color: Colors.grey.withAlpha(100),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          width: 50,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              width: 1,
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15),
-              child: Image.network(
-                imageUrl,
-                height: 100,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: ClipRRect(
+            child: Image.network(
+              imageUrl,
+              width: double.infinity,
+              fit: BoxFit.contain,
+              height: 50,
             ),
           ),
-          Container(
-            width: MediaQuery.of(context).size.width * 0.4,
-            decoration: BoxDecoration(
-              border: Border.all(width: 1, color: Colors.amber),
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(5),
-                  topLeft: Radius.circular(5),
-                  bottomLeft: Radius.circular(8),
-                  bottomRight: Radius.circular(8)),
-              color: Colors.white.withAlpha(100),
-            ),
-            child: Center(
-              child: Text(
-                appName,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
-              ),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Center(
+          child: Text(
+            appName,
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
+              color: Colors.white,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
