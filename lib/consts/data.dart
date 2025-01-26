@@ -140,12 +140,12 @@ List<AppModel> apps = [
     color: Colors.white,
     link: github,
   ),
-  // AppModel(
-  //   title: "Play Store",
-  //   assetPath: "assets/icons/playstore.svg",
-  //   color: Colors.white,
-  //   link: playApps,
-  // ),
+  AppModel(
+    title: "Apps",
+    assetPath: "assets/icons/apps.png",
+    color: Colors.white,
+    // link: playApps,
+  ),
 ];
 
 final List<JobExperience> education = [
@@ -162,53 +162,175 @@ final List<JobExperience> education = [
   ),
   JobExperience(
     color: Colors.blue,
-    location: "cairo, Egypt",
-    title: 'Diploma in   Flutter Develpoment',
-    company: 'Eraa Soft',
-    startDate: 'jan 2024',
+    location: "Cairo, Egypt",
+    title: 'Flutter Diploma',
+    company: 'EraaSoft',
+    startDate: 'Jan 2024',
     endDate: 'June 2024',
     bulletPoints: [
-      'Nine months of continuous filming',
+      'Comprehensive Flutter development training',
+    ],
+  ),
+  JobExperience(
+    color: Colors.green,
+    location: "Online",
+    title: 'Clean Architecture',
+    company: 'Udemy',
+    startDate: 'Feb 2024',
+    endDate: 'March 2024',
+    bulletPoints: [
+      'Learned Clean Architecture principles for scalable applications',
+    ],
+  ),
+  JobExperience(
+    color: Colors.orange,
+    location: "Online",
+    title: 'Cubit and MVVM',
+    company: 'Udemy',
+    startDate: 'April 2024',
+    endDate: 'May 2024',
+    bulletPoints: [
+      'Mastered state management using Cubit and MVVM patterns',
+    ],
+  ),
+  JobExperience(
+    color: Colors.red,
+    location: "Online",
+    title: 'Google Maps with Flutter',
+    company: 'Udemy',
+    startDate: 'June 2024',
+    endDate: 'July 2024',
+    bulletPoints: [
+      'Integrated Google Maps into Flutter applications',
+      'Implemented location-based services and custom map markers',
+      'Worked on real-time location tracking and map customization',
     ],
   ),
 ];
 
 final List<JobExperience> jobExperiences = [
   JobExperience(
-    color: Colors.redAccent,
+    color: Colors.orange,
     location: "Remote",
-    title: 'Build Password Manager  App',
-    company: 'Treaning',
-    startDate: 'June 2022',
-    endDate: 'July 2022',
-    bulletPoints: [
-      "Secure Password Storage: Allows users to save passwords in encrypted form to ensure information privacy.",
-      "Generate strong passwords: Provides a tool to generate random and secure passwords, which helps enhance security.",
-      "Easy Access: Provides a user-friendly interface that makes it easier for users to access their passwords quickly.",
-      "Sync across devices: Supports sync between different devices to ensure that lyrics",
-      "Some of the techniques used theming ,localization ,Bloc ,Responsive ,Firebase Storage ,FireBase Fire Store,PhoneAuth,",
-    ],
-  ),
-  JobExperience(
-    color: Colors.blue,
-    location: "cairo, Egypt",
-    title: 'Build Speech To Text  App',
-    company: 'Treaning',
-    startDate: 'July 2022',
+    title: 'Movie App',
+    company: 'Freelance',
+    startDate: 'January 2024',
     endDate: 'Present',
     bulletPoints: [
-      "This application allows users to convert audio to text easily and quickly. Through a simple user interface, users can:",
-      "Record audio directly from within the app.",
-      "Download audio files from the device to convert them to text.",
-      "Easily share converted text with others.",
-      "Log in using Google or email-password..",
-      "Use simple animation..",
-      "Some of the techniques used theming ,localization ,Bloc ,Responsive ,Firebase Storage ,FireBase Fire Store,Convert Audio To Mb3,LottieFiles ,SharedPreference ,Doi,pdf | Dart package ",
-     
+      "Developed an application to display movies using Clean Architecture.",
+      "Included a browsable list of movies with detailed information.",
+      "Implemented search functionality by movie name, category, or author.",
+      "Used Google Books API for data fetching and management.",
     ],
   ),
+
+  JobExperience(
+    color: Colors.blue,
+    location: "Cairo, Egypt",
+    title: 'GTA Delivery App',
+    company: 'Freelance',
+    startDate: 'July 2023',
+    endDate: 'Present',
+    bulletPoints: [
+      "Built a delivery application for ordering and tracking deliveries.",
+      "Developed a user-friendly interface with real-time tracking features.",
+      "Integrated payment gateways for seamless transactions.",
+      "Ensured responsiveness across different devices.",
+    ],
+  ),
+
+  JobExperience(
+    color: Colors.green,
+    location: "Remote",
+    title: 'Taxi Go Ride-Hailing App',
+    company: 'Freelance',
+    startDate: 'March 2024',
+    endDate: 'Present',
+    bulletPoints: [
+      "Created a ride-hailing app similar to Uber and Careem.",
+      "Developed separate versions for users and drivers.",
+      "Implemented real-time tracking and ride status updates.",
+      "Integrated payment options and localization features.",
+    ],
+  ),
+
+  JobExperience(
+    color: Colors.purple,
+    location: "Cairo, Egypt",
+    title: 'Almasif (Vacation Rental App)',
+    company: 'Freelance',
+    startDate: 'May 2024',
+    endDate: 'Present',
+    bulletPoints: [
+      "Developed an app for booking vacation units.",
+      "Integrated search and filter functionalities to improve user experience.",
+      "Implemented a secure booking and payment system.",
+      "Ensured cross-platform compatibility using Flutter.",
+    ],
+  ),
+
+  JobExperience(
+    color: Colors.teal,
+    location: "Cairo, Egypt",
+    title: 'Talawa (Quran App)',
+    company: 'Freelance',
+    startDate: 'February 2024',
+    endDate: 'Present',
+    bulletPoints: [
+      "Designed an app for reading and reciting the Quran.",
+      "Included features for bookmarking and audio playback.",
+      "Implemented a responsive UI with localization support.",
+      "Ensured compatibility with accessibility standards.",
+    ],
+  ),
+
+  JobExperience(
+    color: Colors.red,
+    location: "Remote",
+    title: 'Note App',
+    company: 'Freelance',
+    startDate: 'January 2024',
+    endDate: 'Present',
+    bulletPoints: [
+      "Designed and developed a notes application using Hive for local data storage.",
+      "Included features for creating, editing, and deleting notes.",
+      "Implemented a responsive UI with a focus on user experience.",
+      "Integrated search functionality for quick access to notes.",
+    ],
+  ),
+
+  JobExperience(
+    color: Colors.yellow,
+    location: "Cairo, Egypt",
+    title: 'Password Manager App',
+    company: 'Freelance',
+    startDate: 'February 2024',
+    endDate: 'Present',
+    bulletPoints: [
+      "Developed a secure and user-friendly password management application.",
+      "Included features such as Google login, password generation, and strength checking.",
+      "Implemented both local and cloud-based storage using Firebase Firestore.",
+      "Integrated responsive UI and localization for global users.",
+    ],
+  ),
+
+  JobExperience(
+    color: Colors.cyan,
+    location: "Cairo, Egypt",
+    title: 'Speech to Text App',
+    company: 'Freelance',
+    startDate: 'March 2024',
+    endDate: 'Present',
+    bulletPoints: [
+      "Created an application to convert speech to text accurately and quickly.",
+      "Supported audio input through microphone or uploaded files.",
+      "Implemented features to convert video to audio (MP3) and use Assembly API.",
+      "Enabled users to edit, share, and download converted text as PDFs.",
+    ],
+  )
+
   // Add more job experiences here...
-  
+
   // JobExperience(
   //   color: Colors.orangeAccent,
   //   location: "Remote",
@@ -249,13 +371,10 @@ final List<JobExperience> jobExperiences = [
   //     "Published the game on the Play Store, achieving over 5,000 downloads, showcasing the ability to deliver a popular and engaging mobile application.",
   //   ],
   // ),
+];
 
-
-
-]
-;
-
-const String facebook= "https://www.facebook.com/profile.php?id=100085093500634";
+const String facebook =
+    "https://www.facebook.com/profile.php?id=100085093500634";
 const String linkedIn = "https://www.linkedin.com/in/ahmed-saaid-1656021b0/";
 const String github = "https://github.com/ahmedmsaaid";
 const String twitter = "https://x.com/AhMed51692444";
@@ -263,7 +382,8 @@ const String whatsapp = "https://wa.link/2xivst";
 const String resumeLink =
     "https://drive.google.com/file/d/1LO3Km6fFkJVW92MNXRLSYl--E9YlTHJd/view";
 const String email = "ahmedsaaid908@gmail.com";
-String introduction ="“Welcome to my portfolio website, this website is highly inspired (almost copied) by Pawan Kumar.\n\nThat I'm a Flutter  developer with experience developing impressive, ready-to-use apps. I have completed two full-fledged applications, working to provide outstanding user experiences by designing easy-to-use interfaces and smooth performance. I always strive to learn and develop, looking for new opportunities to improve my skills and build applications that meet users' needs.";
+String introduction =
+    "“Welcome to my portfolio website, this website is highly inspired (almost copied) by Pawan Kumar.\n\nThat I'm a Flutter  developer with experience developing impressive, ready-to-use apps. I have completed two full-fledged applications, working to provide outstanding user experiences by designing easy-to-use interfaces and smooth performance. I always strive to learn and develop, looking for new opportunities to improve my skills and build applications that meet users' needs.";
 const String playApps =
     "https://play.google.com/store/apps/developer?id=AppyMonk";
 
@@ -285,21 +405,48 @@ List<SkillsModel> skills = [
     skillName: "Bloc",
     colorS: Colors.orange,
   ),
- 
-  
   SkillsModel(
     skillName: "Localization",
     colorS: Colors.orange,
-  ),  SkillsModel(
+  ),
+  SkillsModel(
     skillName: "OOp",
     colorS: Colors.orange,
-  ),  SkillsModel(
+  ),
+  SkillsModel(
     skillName: "Responcive",
     colorS: Colors.orange,
-  ), 
-
+  ),
   SkillsModel(
-    skillName: "Dio",
+    skillName: "MVVM",
+    colorS: Colors.yellow,
+  ),
+  SkillsModel(
+    skillName: "Clean Architecture",
+    colorS: Colors.yellow,
+  ),
+  SkillsModel(
+    skillName: "SOLID Principles",
+    colorS: Colors.yellow,
+  ),
+  SkillsModel(
+    skillName: "Local Database",
+    colorS: Colors.yellow,
+  ),
+  SkillsModel(
+    skillName: "maps",
+    colorS: Colors.yellow,
+  ),
+  SkillsModel(
+    skillName: "Notifications",
+    colorS: Colors.yellow,
+  ),
+  SkillsModel(
+    skillName: "Payments",
+    colorS: Colors.yellow,
+  ),
+  SkillsModel(
+    skillName: "Chat",
     colorS: Colors.yellow,
   ),
 ];
