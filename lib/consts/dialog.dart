@@ -2,32 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Alerts {
-  static showMassage(BuildContext context, List<String> titles) {
+  static showMassage(BuildContext context, Widget widgets) {
     return showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          backgroundColor: Colors.transparent.withOpacity(.6),
+          backgroundColor: Colors.grey.withAlpha(50),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+          elevation: 0,
           contentPadding: EdgeInsets.zero,
           content: Container(
-            height: 220.h,
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+            height: 250,
+            width: 200,
             decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(20.r)),
-            child: GridView.builder(
-              itemBuilder: (context, index) {
-                return Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(
-                            "https://github.com/ahmedmsaaid/assets/blob/main/${titles[index]}/$index.jpeg"),
-                        fit: BoxFit.cover),
-                  ),
-                );
-              },
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3),
+              borderRadius: BorderRadius.circular(20.r), // نصف الدائرة
+              // لون الخلفية مع شفافية ), // لون الخلفية مع شفافية
             ),
+            child: Center(child: widgets),
           ),
         );
       },

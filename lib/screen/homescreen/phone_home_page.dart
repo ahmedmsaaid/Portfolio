@@ -1,7 +1,14 @@
+import 'package:awesome_portfolio/apps/data/apps_cubit/apps_cubit.dart';
+import 'package:awesome_portfolio/apps/screeens/apps_screen.dart';
+import 'package:awesome_portfolio/apps/screeens/file_detail_page.dart';
+import 'package:awesome_portfolio/consts/dialog.dart';
 import 'package:custom_button_builder/custom_button_builder.dart';
 import 'package:device_frame/device_frame.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import '../../consts/data.dart';
@@ -45,6 +52,118 @@ class PhoneHomeScreen extends StatelessWidget {
                                 currentState.changePhoneScreen(
                                     apps[index].screen!, false,
                                     titlee: apps[index].title);
+                              } else if (apps[index].title == "Apps") {
+                                Alerts.showMassage(
+                                    context,
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                            100), // نصف الدائرة
+                                      ),
+                                      child: Center(
+                                        child: Scaffold(
+                                          backgroundColor: Colors.transparent,
+                                          body: BlocProvider(
+                                            create: (_) => AppsCubit()
+                                              ..loadFiles(
+                                                  "https://api.github.com/repos/ahmedmsaaid/assets"),
+                                            child: BlocBuilder<AppsCubit,
+                                                AppsState>(
+                                              builder: (context, state) {
+                                                if (state is FileGridLoading) {
+                                                  return Center(
+                                                      child: Lottie.asset(
+                                                          "assets/lottie/loading.json"));
+                                                } else if (state
+                                                    is FileGridLoaded) {
+                                                  // تصفية الملفات لإزالة "Zicons"
+                                                  final files = state.files
+                                                      .where((file) =>
+                                                          file != "Zicons")
+                                                      .toList();
+
+                                                  return GridView.builder(
+                                                    gridDelegate:
+                                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                                      crossAxisCount: 3,
+                                                      crossAxisSpacing: 1,
+                                                      mainAxisSpacing: 1,
+                                                    ),
+                                                    itemCount: files.length,
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      final file = files[index];
+
+                                                      return GestureDetector(
+                                                        onTap: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                          currentState
+                                                              .changePhoneScreen(
+                                                            FileDetailPage(
+                                                                file: file),
+                                                            false,
+                                                            titlee: file,
+                                                          );
+                                                        },
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            FutureBuilder<
+                                                                String>(
+                                                              future:
+                                                                  checkImageUrl(
+                                                                      file),
+                                                              builder: (context,
+                                                                  snapshot) {
+                                                                if (snapshot
+                                                                        .connectionState ==
+                                                                    ConnectionState
+                                                                        .waiting) {
+                                                                  return Center(
+                                                                      child:
+                                                                          Container());
+                                                                } else if (snapshot
+                                                                    .hasError) {
+                                                                  return Image
+                                                                      .network(
+                                                                          "https://example.com/default_image.jpeg"); // صورة افتراضية
+                                                                } else {
+                                                                  return AppWidget(
+                                                                    imageUrl:
+                                                                        snapshot.data ??
+                                                                            '',
+                                                                    appName:
+                                                                        file,
+                                                                  );
+                                                                }
+                                                              },
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                } else if (state
+                                                    is FileGridError) {
+                                                  return Center(
+                                                      child: Text(
+                                                          'Error: ${state.message}'));
+                                                }
+                                                return Center(
+                                                    child: Text(
+                                                        'No files found.'));
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ));
                               }
                             },
                             width: 45,
@@ -85,5 +204,24 @@ class PhoneHomeScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<String> checkImageUrl(String file) async {
+    String uri =
+        "https://raw.githubusercontent.com/ahmedmsaaid/assets/main/Zicons/$file.png"; // تعديل ليتناسب مع اسم الصورة
+    try {
+      final response = await Dio().head(uri);
+
+      // تحقق مما إذا كان الرابط يعمل
+      if (response.statusCode == 200) {
+        return uri; // الرابط شغال
+      } else {
+        throw Exception('رابط الصورة غير شغال');
+      }
+    } catch (e) {
+      final link = uri.replaceAll("png", "jpeg");
+      // في حالة وجود خطأ، نعيد رابط للصورة الافتراضية
+      return link; // تغيير هذا إلى رابط صورة افتراضية أو تغييره إلى jpeg
+    }
   }
 }
